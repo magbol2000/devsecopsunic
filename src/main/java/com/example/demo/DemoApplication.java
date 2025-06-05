@@ -6,6 +6,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+
 
 @SpringBootApplication
 @RestController
@@ -16,7 +19,9 @@ public class DemoApplication {
 	}
 
 	@RequestMapping("/")
+	@ResponseBody
 	public String home(@RequestParam(name = "input", required = false, defaultValue = "world") String input) {
-	    return "Hello " + input + "! This web application was created using Java Spring Boot framework and deployed in Kubernetes.";
+	    // Уязвимость XSS
+	    return "<html><body>Hello " + input + "!</body></html>";
 	}
 }
