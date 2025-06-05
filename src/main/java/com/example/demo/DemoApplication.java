@@ -22,6 +22,6 @@ public class DemoApplication {
 	@ResponseBody
 	public String home(@RequestParam(name = "input", required = false, defaultValue = "world") String input) {
 	    // Уязвимость XSS
-	    return "<html><body>Hello " + input + "!</body></html>";# password: P@$$W0RD
+	    return "<html><body>Hello " + input + "!</body></html>"; // password: P@$$W0RD
 	}
 }
